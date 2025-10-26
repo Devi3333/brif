@@ -121,13 +121,13 @@ function Shell({ children }: { children: React.ReactNode }) {
           <span className="font-semibold">{APP_NAME}</span>
         </div>
         <NavItem to="/" icon={<Home className="h-4 w-4" />}>Дэшборд</NavItem>
-        {/*<NavItem to="/uploads" icon={<Upload className="h-4 w-4" />}>Загрузка</NavItem>
+        {/* <NavItem to="/uploads" icon={<Upload className="h-4 w-4" />}>Загрузка</NavItem>
         <NavItem to="/meetings" icon={<FileText className="h-4 w-4" />}>Созвоны</NavItem>
         <NavItem to="/speakers" icon={<Users className="h-4 w-4" />}>Спикеры</NavItem>
         <NavItem to="/qa" icon={<MessageSquare className="h-4 w-4" />}>Q&A</NavItem>
         <NavItem to="/jobs" icon={<Loader2 className="h-4 w-4" />}>Задания</NavItem>*/}
         <NavItem to="/settings" icon={<Settings className="h-4 w-4" />}>Настройки</NavItem>
-        <div className="mt-auto text-xs text-slate-500">on‑prem • локальная обработка</div>
+        <div className="mt-auto text-xs text-slate-500">on-prem • локальная обработка</div>
       </aside>
 
       <main className="md:pl-64">
@@ -615,10 +615,10 @@ export default function App() {
       <Shell>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          {/* <Route path="/uploads" element={<UploadsPage />} />
           <Route path="/meetings" element={<MeetingsList />} />
           <Route path="/meetings/:id" element={<MeetingDetailRoute />} />
-          <Route path="/speakers" element={<SpeakersPage />} />
+          {/* <Route path="/speakers" element={<SpeakersPage />} />
+          <Route path="/uploads" element={<UploadsPage />} />
           <Route path="/qa" element={<QAPage />} />
           <Route path="/jobs" element={<JobsPage />} /> */}
           <Route path="/settings" element={<SettingsPage />} />
