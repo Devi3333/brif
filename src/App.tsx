@@ -352,9 +352,6 @@ function MeetingDetail({ id }: { id: string }) {
                 <Button variant="secondary" onClick={() => navigate(-1)}>
                   Назад
                 </Button>
-                <Button>
-                  <Sparkles className="h-4 w-4 mr-2" /> Обновить саммари
-                </Button>
               </div>
             </div>
           </CardHeader>
@@ -377,10 +374,14 @@ function MeetingDetail({ id }: { id: string }) {
           </CardContent>
         </Card>
         <Card>
-          <CardHeader>
+          <CardHeader className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2">
-              <Bot className="h-5 w-5" />Краткое саммари
+              <Bot className="h-5 w-5" />
+              Краткое саммари
             </CardTitle>
+            <Button size="md" variant="default">
+              <Sparkles className="h-4 w-4 mr-2" /> Обновить саммари
+            </Button>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-slate-700">{meeting.summary}</p>
