@@ -389,27 +389,25 @@ function MeetingDetail({ id }: { id: string }) {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><ListChecks className="h-5 w-5" />Транскрипт</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <ListChecks className="h-5 w-5" /> Транскрипт
+            </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
-            <div className="p-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <div className="lg:col-span-2">
-                <div className="-mx-4 space-y-3">
+            <div className="p-2 grid grid-cols-1 lg:grid-cols-3 gap-2">
+              <div className="col-span-full">
+                <div className="space-y-2 w-full">
                   {mockTranscript.map((u) => (
                     <div
                       key={u.id}
-                      className={`w-full rounded-xl border p-4 bg-white cursor-pointer transition-all ${selectedUtt === u.id ? "ring-2 ring-sky-400 shadow-sm" : ""
+                      className={`w-full rounded-lg border p-2 bg-white cursor-pointer transition-all ${selectedUtt === u.id ? "ring-2 ring-sky-400 shadow-sm" : ""
                         }`}
-                      onClick={() => setSelectedUtt(u.id)}>
+                      onClick={() => setSelectedUtt(u.id)}
+                    >
                       <div className="flex items-center justify-between text-xs text-slate-500">
                         <span>{fmtTime(u.start)}–{fmtTime(u.end)}</span>
-                        <Button
-                          size="sm"
-                          variant="secondary"
-                          className="ml-2 h-6 px-2 py-0 text-xs flex items-center gap-1"
-                        >
-                          <Edit3 className="h-3 w-3" />
-                          Править
+                        <Button size="sm" variant="secondary" className="ml-2 h-6 px-2 py-0 text-xs flex items-center gap-1">
+                          <Edit3 className="h-3 w-3" /> Править
                         </Button>
                       </div>
                       <div className="flex items-center gap-2 mt-1">
@@ -425,7 +423,6 @@ function MeetingDetail({ id }: { id: string }) {
           </CardContent>
         </Card>
       </div>
-
       <Card className="xl:col-span-1">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><MessageSquare className="h-5 w-5" />Q&A по транскрипту</CardTitle>
