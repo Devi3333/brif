@@ -340,7 +340,7 @@ function MeetingDetail({ id }: { id: string }) {
   const [text, setText] = useState<string>(mockTranscript.map((u) => `[${fmtTime(u.start)}] ${u.speaker}: ${u.text}`).join("\n"));
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
       <div className="xl:col-span-2 space-y-4">
         <Card>
           <CardHeader>
@@ -370,6 +370,35 @@ function MeetingDetail({ id }: { id: string }) {
               <div className="mt-3 h-2 w-full bg-slate-700 rounded-full overflow-hidden">
                 <div className="h-full bg-white/80 w-1/3" />
               </div>
+              {/* активный/выбранный фрагмент субтитров (крупная строка) */}
+              <div className="mt-3 text-sm text-white/90">
+                {(mockTranscript.find(t => t.id === selectedUtt) ?? mockTranscript[0])?.text}
+              </div>
+              {/* горизонтальная линейка коротких «чипов» субтитров */}
+              <div className="mt-2 overflow-x-auto">
+                <div className="flex gap-2 min-w-full">
+                  {mockTranscript.map((u) => (
+                    <button
+                      key={u.id}
+                      onClick={() => setSelectedUtt(u.id)}
+                      className={[
+                        "shrink-0 rounded-md border px-2 py-1 text-xs leading-5",
+                        "bg-slate-800/70 text-slate-100/90 border-white/10",
+                        "hover:bg-slate-700/80 hover:border-white/20",
+                        selectedUtt === u.id ? "ring-2 ring-sky-400" : ""
+                      ].join(" ")}
+                      title={`${fmtTime(u.start)} — ${fmtTime(u.end)}`}
+                    >
+                      <span className="mr-2 text-[10px] text-slate-400">
+                        {fmtTime(u.start)}
+                      </span>
+                      <span>
+                        {u.text.length > 60 ? u.text.slice(0, 60) + "…" : u.text}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -394,9 +423,9 @@ function MeetingDetail({ id }: { id: string }) {
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
-            <div className="p-2 grid grid-cols-1 lg:grid-cols-3 gap-2">
+            <div className="p-0 grid grid-cols-1 lg:grid-cols-3 gap-1">
               <div className="col-span-full">
-                <div className="space-y-2 w-full">
+                <div className="space-y-1 w-full">
                   {mockTranscript.map((u) => (
                     <div
                       key={u.id}
@@ -423,7 +452,7 @@ function MeetingDetail({ id }: { id: string }) {
           </CardContent>
         </Card>
       </div>
-      <Card className="xl:col-span-1">
+      <Card className="xl:col-span-2 w-full">
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><MessageSquare className="h-5 w-5" />Q&A по транскрипту</CardTitle>
         </CardHeader>
